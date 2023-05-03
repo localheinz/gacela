@@ -39,7 +39,8 @@
         "psalm/plugin-phpunit": "^0.18",
         "symfony/console": "^5.4",
         "symfony/var-dumper": "^5.4",
-        "vimeo/psalm": "^5.9"
+        "vimeo/psalm": "^5.9",
+        "infection/infection": "^0.26"
     },
     "suggest": {
         "gacela-project/phpstan-extension": "A set of phpstan rules for Gacela",
@@ -66,7 +67,9 @@
             "php": "8.0"
         },
         "allow-plugins": {
-            "composer/package-versions-deprecated": true
+            "composer/package-versions-deprecated": true,
+            "veewee/composer-run-parallel": true,
+            "infection/extension-installer": true
         }
     },
     "scripts": {
@@ -87,6 +90,7 @@
         "phpstan": "XDEBUG_MODE=off ./vendor/bin/phpstan analyze",
         "csfix": "XDEBUG_MODE=off ./vendor/bin/php-cs-fixer fix",
         "csrun": "XDEBUG_MODE=off ./vendor/bin/php-cs-fixer fix --dry-run",
+        "infection": "XDEBUG_MODE=coverage ./vendor/bin/infection --show-mutations --threads=$(nproc 2> /dev/null || sysctl -n hw.logicalcpu) --min-msi=100 --min-covered-msi=100 --test-framework=phpunit",
         "phpbench": "XDEBUG_MODE=off ./vendor/bin/phpbench run --report=aggregate --ansi",
         "phpbench-base": "XDEBUG_MODE=off ./vendor/bin/phpbench run --tag=baseline --report=aggregate --progress=plain --ansi",
         "phpbench-ref": "XDEBUG_MODE=off ./vendor/bin/phpbench run --ref=baseline --report=aggregate --progress=plain --ansi",
