@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Gacela\Framework\Bootstrap;
 
 use Closure;
+use Gacela\Framework\Config\GacelaConfigBuilder\AppConfigBuilder;
 use Gacela\Framework\Config\GacelaConfigBuilder\BindingsBuilder;
-use Gacela\Framework\Config\GacelaConfigBuilder\ConfigBuilder;
 use Gacela\Framework\Config\GacelaConfigBuilder\SuffixTypesBuilder;
 use Gacela\Framework\Event\Dispatcher\EventDispatcherInterface;
 
@@ -15,7 +15,7 @@ interface SetupGacelaInterface
     /**
      * Define different config sources.
      */
-    public function buildConfig(ConfigBuilder $builder): ConfigBuilder;
+    public function buildAppConfig(AppConfigBuilder $builder): AppConfigBuilder;
 
     /**
      * Define the mapping between interfaces and concretions, so Gacela services will auto-resolve them automatically.
@@ -80,10 +80,10 @@ interface SetupGacelaInterface
     /**
      * @return list<class-string>
      */
-    public function getExtendConfig(): array;
+    public function getGacelaConfigsToExtend(): array;
 
     /**
-     * @return list<class-string>
+     * @return list<class-string|callable>
      */
     public function getPlugins(): array;
 }

@@ -1,5 +1,19 @@
 # Changelog
 
+### Unreleased
+
+- Added command `gacela list:modules`
+
+### 1.4.0
+### 2023-05-20
+
+- Added `Gacela::rootDir()`
+- Added `GacelaConfig::enableFileCache()`
+- Added plugins as callable
+    - `GacelaConfig::addPlugin(string|callable)`
+- Rename `addExtendConfig()` to `extendGacelaConfig()` in `GacelaConfig`
+- Removed deprecated `withPhpConfigDefault()`
+
 ### 1.3.0
 ### 2023-05-08
 
